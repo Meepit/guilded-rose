@@ -13,6 +13,11 @@ class NormalItemTest(unittest.TestCase):
         self.item.update()
         self.assertEqual(4, self.item.quality)
 
+    def test_double_degradation_after_sell_in(self):
+        self.item.sell_in = 0
+        self.item.update()
+        self.assertEqual(3, self.item.quality)
+
     def test_sell_in_degradation(self):
         self.item.update()
         self.assertEqual(4, self.item.sell_in)
