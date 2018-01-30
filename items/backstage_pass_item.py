@@ -7,3 +7,13 @@ class BackStagePassItem(QualityIncreaseItem):
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality) + ", backstage pass item"
+
+    def update(self):
+        if self.sell_in == 0:
+            self.quality = 0
+        elif self.sell_in <= 5:
+            self.quality += 3
+        elif self.sell_in <= 10:
+            self.quality += 2
+        else:
+            self.quality += 1
