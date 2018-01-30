@@ -66,5 +66,11 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual(3, self.backstage_pass.quality)
 
+    def test_backstage_pass_quality_increase_3_5_days_before_sell_in(self):
+        self.backstage_pass.sell_in = 5
+        gilded_rose = GildedRose([self.backstage_pass])
+        gilded_rose.update_quality()
+        self.assertEqual(4, self.backstage_pass.quality)
+
 if __name__ == '__main__':
     unittest.main()
