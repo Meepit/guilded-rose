@@ -23,6 +23,14 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual(0, self.normal_item.quality)
 
+    def test_double_degradation_after_sell_in_date(self):
+        self.normal_item.sell_in = 0
+        self.normal_item.quality = 2
+        gilded_rose = GildedRose([self.normal_item])
+        gilded_rose.update_quality()
+        self.assertEqual(0, self.normal_item.quality)
+
+
     def test_normal_item_sell_in_date_decrementation(self):
         gilded_rose = GildedRose([self.normal_item])
         gilded_rose.update_quality()
@@ -43,6 +51,7 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose([self.legendary_item])
         gilded_rose.update_quality()
         self.assertEqual(80, self.legendary_item.quality)
+
 
 
 if __name__ == '__main__':
