@@ -7,3 +7,6 @@ class LegendaryItem(Item):
 
     def __repr__(self):
         return Item.__repr__(self) + ", legendary item"
+
+    def update(self):
+        pass #legendary items do not degrade
