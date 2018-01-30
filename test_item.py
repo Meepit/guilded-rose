@@ -1,17 +1,21 @@
 import unittest
+from gilded_rose import Item
 
 class ItemTest(unittest.TestCase):
+    def setUp(self):
+        self.item = Item("foo", 5, 1)
+
     def test_item_name(self):
-        pass
+        self.assertEqual("foo", self.item.name)
 
     def test_item_sell_in(self):
-        pass
+        self.assertEqual(5, self.item.sell_in)
 
     def test_item_quality(self):
-        pass
+        self.assertEqual(1, self.item.quality)
 
     def test_item_print(self):
-        pass
+        self.assertEqual("foo, 5, 1", self.item.__repr__())
 
 if __name__ == '__main__':
     unittest.main()

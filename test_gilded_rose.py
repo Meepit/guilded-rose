@@ -6,6 +6,7 @@ import mock
 
 from gilded_rose import Item, GildedRose
 
+#python3 -m unittest to run all tests in directory
 class GildedRoseTest(unittest.TestCase):
     def setUp(self):
         # Reassigning name is neccessary because name is an attribute of MagicMock..
