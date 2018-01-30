@@ -12,6 +12,9 @@ class GildedRoseTest(unittest.TestCase):
         self.normal_item = mock.Mock(name="foo", sell_in=1, quality=1)
         self.normal_item.name = "foo"
 
+        self.aged_brie = mock.Mock(name="Aged Brie", sell_in=1, quality=1)
+        self.aged_brie.name = "Aged Brie"
+
     def test_normal_item_degradation(self):
         gilded_rose = GildedRose([self.normal_item])
         gilded_rose.update_quality()
@@ -21,6 +24,11 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose([self.normal_item])
         gilded_rose.update_quality()
         self.assertEqual(0, self.normal_item.sell_in)
+
+    def test_aged_brie_item_no_degradation(self):
+        gilded_rose = GildedRose([self.aged_brie])
+        gilded_rose.update_quality()
+        self.assertEqual(2, self.aged_brie.quality)
 
 
 if __name__ == '__main__':
