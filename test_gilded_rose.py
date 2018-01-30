@@ -18,6 +18,9 @@ class GildedRoseTest(unittest.TestCase):
         self.legendary_item = mock.Mock(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80)
         self.legendary_item.name = "Sulfuras, Hand of Ragnaros"
 
+        self.backstage_pass = mock.Mock(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=1)
+        self.backstage_pass.name = "Backstage passes to a TAFKAL80ETC concert"
+
     def test_normal_item_degradation(self):
         gilded_rose = GildedRose([self.normal_item])
         gilded_rose.update_quality()
@@ -52,7 +55,10 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual(80, self.legendary_item.quality)
 
-
+    def test_backstage_pass_quality_increase(self):
+        gilded_rose = GildedRose([self.backstage_pass])
+        gilded_rose.update_quality()
+        self.assertEqual(2, self.backstage_pass.quality)
 
 if __name__ == '__main__':
     unittest.main()
