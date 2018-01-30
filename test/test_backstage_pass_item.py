@@ -27,3 +27,12 @@ class BackStagePassItemTest(unittest.TestCase):
         self.item.sell_in = 0
         self.item.update()
         self.assertEqual(0, self.item.quality)
+
+    def test_sell_in_decrement(self):
+        self.item.update()
+        self.assertEqual(11, self.item.sell_in)
+
+    def test_sell_in_no_decrement_after_0(self):
+        self.item.sell_in = 0
+        self.item.update()
+        self.assertEqual(0, self.item.sell_in)

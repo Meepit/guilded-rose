@@ -9,6 +9,11 @@ class BackStagePassItem(QualityIncreaseItem):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality) + ", backstage pass item"
 
     def update(self):
+        self.update_quality()
+        if self.sell_in > 0:
+            self.sell_in -= 1
+
+    def update_quality(self):
         if self.sell_in == 0:
             self.quality = 0
         elif self.sell_in <= 5:
