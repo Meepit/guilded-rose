@@ -7,3 +7,7 @@ class QualityIncreaseItem(Item):
 
     def __repr__(self):
         return Item.__repr__(self) + ", quality increase item"
+
+    def update(self):
+        self.quality += 1
+        self.sell_in -= 1
