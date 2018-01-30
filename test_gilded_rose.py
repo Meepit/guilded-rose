@@ -4,7 +4,8 @@ from unittest import mock
 from unittest.mock import MagicMock
 import mock
 
-from gilded_rose import Item, GildedRose
+from Item import Item
+from gilded_rose import GildedRose
 
 #python3 -m unittest to run all tests in directory
 class GildedRoseTest(unittest.TestCase):
