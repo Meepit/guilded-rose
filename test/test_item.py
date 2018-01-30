@@ -1,5 +1,6 @@
 import unittest
-from gilded_rose import Item
+import items
+from items.Item import Item
 
 class ItemTest(unittest.TestCase):
     def setUp(self):

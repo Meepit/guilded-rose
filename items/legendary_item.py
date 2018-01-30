@@ -1,4 +1,5 @@
-from Item import Item
+import items
+from items.Item import Item
 
 class LegendaryItem(Item):
     def __init__(self, name, sell_in, quality):
