@@ -15,6 +15,9 @@ class GildedRoseTest(unittest.TestCase):
         self.aged_brie = mock.Mock(name="Aged Brie", sell_in=1, quality=1)
         self.aged_brie.name = "Aged Brie"
 
+        self.legendary_item = mock.Mock(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80)
+        self.legendary_item.name = "Sulfuras, Hand of Ragnaros"
+
     def test_normal_item_degradation(self):
         gilded_rose = GildedRose([self.normal_item])
         gilded_rose.update_quality()
@@ -35,6 +38,11 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         gilded_rose.update_quality()
         self.assertEqual(4, self.aged_brie.quality)
+
+    def test_legendary_items_no_quality_decreae(self):
+        gilded_rose = GildedRose([self.legendary_item])
+        gilded_rose.update_quality()
+        self.assertEqual(80, self.legendary_item.quality)
 
 
 if __name__ == '__main__':
