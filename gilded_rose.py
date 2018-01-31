@@ -12,7 +12,7 @@ class GildedRose(object):
         self.items = items
 
     def create_item(self, item):
-        # Returns a class that has a update() class method
+        # Returns a object that has an update method
         item_classes = {
             "Aged Brie": QualityIncreaseItem,
             "Sulfuras, Hand of Ragnaros": LegendaryItem,

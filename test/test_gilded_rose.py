@@ -3,6 +3,7 @@ import unittest
 from unittest import mock
 from unittest.mock import MagicMock
 import mock
+from mock import patch
 
 import items
 from items.Item import Item
@@ -44,27 +45,9 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose([self.normal_item])
         self.assertEqual(NormalItem, type(gilded_rose.create_item(self.normal_item)))
 
-
-    #
-    # def test_normal_item_update(self):
-    #     gilded_rose = GildedRose([self.normal_item])
-    #     gilded_rose.update_quality()
-    #     self.normal_item.update.assert_called()
-    #
-    # def test_aged_brie_update(self):
-    #     gilded_rose = GildedRose([self.aged_brie])
-    #     gilded_rose.update_quality()
-    #     self.aged_brie.update.assert_called()
-    #
-    # def test_legendary_item_update(self):
-    #     gilded_rose = GildedRose([self.legendary_item])
-    #     gilded_rose.update_quality()
-    #     self.legendary_item.update.assert_called()
-    #
-    # def test_backstage_pass_item_update(self):
-    #     gilded_rose = GildedRose([self.backstage_pass])
-    #     gilded_rose.update_quality()
-    #     self.backstage_pass.update.assert_called()
+    def mock_create_item(self):
+        print("Worked!!!!!!")
+        return self.normal_item
 
 
 if __name__ == '__main__':
