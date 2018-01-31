@@ -32,7 +32,7 @@ class BackStagePassItemTest(unittest.TestCase):
         self.item.update()
         self.assertEqual(11, self.item.sell_in)
 
-    def test_sell_in_no_decrement_after_0(self):
-        self.item.sell_in = 0
+    def test_quality_cannot_exceed_50(self):
+        self.item.quality = 50
         self.item.update()
-        self.assertEqual(0, self.item.sell_in)
+        self.assertEqual(50, self.item.quality)

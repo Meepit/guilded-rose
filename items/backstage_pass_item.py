@@ -10,8 +10,7 @@ class BackStagePassItem(QualityIncreaseItem):
 
     def update(self):
         self.update_quality()
-        if self.sell_in > 0:
-            self.sell_in -= 1
+        self.sell_in -= 1
 
     def update_quality(self):
         if self.sell_in == 0:
@@ -22,3 +21,5 @@ class BackStagePassItem(QualityIncreaseItem):
             self.quality += 2
         else:
             self.quality += 1
+        if self.quality > 50:
+            self.quality = 50

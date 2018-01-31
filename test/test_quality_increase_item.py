@@ -21,3 +21,14 @@ class NormalItemTest(unittest.TestCase):
     def test_sell_in_decrease(self):
         self.item.update()
         self.assertEqual(4, self.item.sell_in)
+
+    def test_max_quality_50(self):
+        self.item.quality = 50
+        self.item.update()
+        self.assertEqual(50, self.item.quality)
+
+    def test_max_quality_50_passed_sell_in(self):
+        self.item.quality = 49
+        self.item.sell_in = 0
+        self.item.update()
+        self.assertEqual(50, self.item.quality)
