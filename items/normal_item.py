@@ -1,16 +1,15 @@
-import items
-from items.Item import Item
 
-class NormalItem(Item):
-    def __init__(self, name, sell_in, quality):
-        Item.__init__(self, name, sell_in, quality)
+
+class NormalItem():
+    def __init__(self, item):
+        self.item = item
 
     def __repr__(self):
         return Item.__repr__(self) + ", normal item"
 
     def update(self):
-        if self.sell_in <= 0:
-            self.quality -= 2
+        if self.item.sell_in <= 0:
+            self.item.quality -= 2
         else:
-            self.quality -= 1
-        self.sell_in -= 1
+            self.item.quality -= 1
+        self.item.sell_in -= 1
