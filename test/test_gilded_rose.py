@@ -24,62 +24,26 @@ class GildedRoseTest(unittest.TestCase):
         self.backstage_pass = mock.Mock(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=1)
         self.backstage_pass.name = "Backstage passes to a TAFKAL80ETC concert"
 
-    def test_normal_item_degradation(self):
+    def test_normal_item_update(self):
         gilded_rose = GildedRose([self.normal_item])
         gilded_rose.update_quality()
-        self.assertEqual(0, self.normal_item.quality)
+        self.normal_item.update.assert_called()
 
-    def test_double_degradation_after_sell_in_date(self):
-        self.normal_item.sell_in = 0
-        self.normal_item.quality = 2
-        gilded_rose = GildedRose([self.normal_item])
-        gilded_rose.update_quality()
-        self.assertEqual(0, self.normal_item.quality)
-
-
-    def test_normal_item_sell_in_date_decrementation(self):
-        gilded_rose = GildedRose([self.normal_item])
-        gilded_rose.update_quality()
-        self.assertEqual(0, self.normal_item.sell_in)
-
-    def test_aged_brie_item_no_degradation(self):
+    def test_aged_brie_update(self):
         gilded_rose = GildedRose([self.aged_brie])
         gilded_rose.update_quality()
-        self.assertEqual(2, self.aged_brie.quality)
+        self.aged_brie.update.assert_called()
 
-    def test_aged_brie_double_increase_after_sell_in(self):
-        gilded_rose = GildedRose([self.aged_brie])
-        gilded_rose.update_quality()
-        gilded_rose.update_quality()
-        self.assertEqual(4, self.aged_brie.quality)
-
-    def test_legendary_items_no_quality_decreae(self):
+    def test_legendary_item_update(self):
         gilded_rose = GildedRose([self.legendary_item])
         gilded_rose.update_quality()
-        self.assertEqual(80, self.legendary_item.quality)
+        self.legendary_item.update.assert_called()
 
-    def test_backstage_pass_quality_increase(self):
+    def test_backstage_pass_item_update(self):
         gilded_rose = GildedRose([self.backstage_pass])
         gilded_rose.update_quality()
-        self.assertEqual(2, self.backstage_pass.quality)
+        self.backstage_pass.update.assert_called()
 
-    def test_backstage_double_increase_10_days_before_sell_in(self):
-        self.backstage_pass.sell_in = 10
-        gilded_rose = GildedRose([self.backstage_pass])
-        gilded_rose.update_quality()
-        self.assertEqual(3, self.backstage_pass.quality)
-
-    def test_backstage_pass_quality_increase_3_5_days_before_sell_in(self):
-        self.backstage_pass.sell_in = 5
-        gilded_rose = GildedRose([self.backstage_pass])
-        gilded_rose.update_quality()
-        self.assertEqual(4, self.backstage_pass.quality)
-
-    def test_quality_cannot_exceed_50(self):
-        self.aged_brie.quality = 50
-        gilded_rose = GildedRose([self.aged_brie])
-        gilded_rose.update_quality()
-        self.assertEqual(50, self.aged_brie.quality)
 
 if __name__ == '__main__':
     unittest.main()
